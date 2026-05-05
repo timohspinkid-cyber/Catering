@@ -1,8 +1,14 @@
 import React from 'react'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 const services = () => {
   return (
-    <div>
+    <div className=''>
+      <p className='text-center'>Alice Outside Catering offers professional catering services across Kenya, tailored for weddings,Ruracials,Burials,Conferences and Graduations. <br/>
+      Our catering team delivers full-course meals, buffets,desserts, and live cooking stations designed to match your event style and guest preferences.<br/> 
+      We provide proteins, starches, vegetables, fresh fruits, beverages, and custom menu creations that guarantee both taste and presentation.<br/>
+      Whether it’s 50 guests or 5,000, we ensure seamless catering with elegant setups, reliable service, and unforgettable dining experiences.<br/>
+     Choose Alice Outside catering for the best catering  in Kenya.</p>
       <h1>Our Services</h1>
 
       <div id="weddings">
