@@ -4,27 +4,52 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 const services = () => {
   return (
     <div className=''>
-      <p className='text-center'>Alice Outside Catering offers professional catering services across Kenya, tailored for weddings,Ruracials,Burials,Conferences and Graduations. <br/>
-      Our catering team delivers full-course meals, buffets,desserts, and live cooking stations designed to match your event style and guest preferences.<br/> 
-      We provide proteins, starches, vegetables, fresh fruits, beverages, and custom menu creations that guarantee both taste and presentation.<br/>
-      Whether it’s 50 guests or 5,000, we ensure seamless catering with elegant setups, reliable service, and unforgettable dining experiences.<br/>
-     Choose Alice Outside catering for the best catering  in Kenya.</p>
-      <h1>Our Services</h1>
+      <div className="carousel-item active">
+              <img 
+                src="/images/cooking-removebg-preview.png" 
+                alt="Slide 1" 
+                className="w-100 d-block" 
+                style={{ height: '300px', width: '450px', objectFit: 'cover' }} 
+              />
+              <div className='carousel-caption d-none d-md-block'>
+                <h1 className='h1'>The best catering services </h1>
+              </div>
+            </div>
+     
+      <section className="row">
+        
 
-      <div id="weddings">
-        <h2>Weddings</h2>
-        <p>Elegant catering for your special day.</p>
+        <div className="col-md-12 text-center">
+            
+          <div className="card shadow">
+            <div className="card-header">
+              <h1 className='h1'></h1>
+           </div>
+          <div className="card-body">
+        <p className="text-dark H1">
+        There are special events in people’s lives and also in organizations that, when marked, there is a need to identify the best catering services to meet the catering needs for the function. When seeking ‘the best’, it means there are other catering companies in the industry that can offer catering services below standards or below your expectations.
+
+Therefore, the way to go is choosing the best caterers in Nairobi, and that is where you will find Hauchi Kay catering service, Kenya’s top-ranked in the list. Anytime you choose our catering services for your private event, wedding, party, celebration of a personal milestone, bridal shower, or any other event, you and your guests will have a memorable dining experience. We ensure a lasting taste, unforgettable memory in every bite and sip!!
+        </p>
+         </div>
+                
+
       </div>
 
-      <div id="corporate">
-        <h2>Corporate Events</h2>
-        <p>Professional catering for business meetings.</p>
-      </div>
+        
+        </div>
+        
 
-      <div id="parties">
-        <h2>Private Parties</h2>
-        <p>Celebrate birthdays and events with great food.</p>
-      </div></div>
+  
+
+        
+
+        
+          
+
+
+    </section>
+    </div>
   )
 }
 
