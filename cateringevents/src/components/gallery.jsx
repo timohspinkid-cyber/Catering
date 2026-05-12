@@ -163,8 +163,7 @@ const gallery = () => {
 
 
 
-      <Link to='/contactus' className='btn btn-success text-white m-4 btn-outline-info'>Contact</Link>
-
+      
     </div>
     
   )

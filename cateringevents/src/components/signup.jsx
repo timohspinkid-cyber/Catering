@@ -87,7 +87,7 @@ const SignUp = () => {
           <input type="password" placeholder='Enter your password' className='form-control' value={password} onChange={(e)=>setPassword(e.target.value)}/>
           <br />
           <br />
-          <input type="submit" value={"Sign Up"} className='form-control bg-info'/>
+          <input type="submit" value={"Sign Up"} className='form-control btn btn-success text-white m-4 btn-outline-info'/>
           <br />
           <p>Already have an account?<Link to='/signin'>Sign In</Link></p>
           

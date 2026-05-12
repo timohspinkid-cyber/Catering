@@ -33,7 +33,7 @@
 }
 .h1{
   font-family: 'Times New Roman', Times, serif;
-  background-color: #7B1E3B;
+  background-color: #045e10;
   text-align: left;
   color: #D4AF37;
 }
@@ -51,4 +51,79 @@
   to {
     transform: rotate(360deg);
   }
+}
+.contact-section {
+  padding: 60px;
+  background: #f7f7f7;
+}
+
+.contact-section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.contact-container {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.contact-bg{
+  height: 60vh;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url("https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1400")
+      center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+
+/* FORM */
+.contact-form {
+  background: white;
+  padding: 25px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.contact-form h3 {
+  margin-bottom: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.contact-form textarea {
+  height: 100px;
+  resize: none;
+}
+
+.contact-form button {
+  padding: 10px;
+  border: none;
+  background: #ff4d4d;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* INFO */
+.contact-info {
+  background: white;
+  padding: 25px;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }

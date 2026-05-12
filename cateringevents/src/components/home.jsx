@@ -145,25 +145,7 @@ const home = () => {
 
         
         </div>
-        <div className="col-md-6 text-center">
-            
-          <div className="card shadow card">
-            <div className="card-header">
-               <h1 className='h1'>
-                conference Catering
-                </h1>
-              
-            </div>
-            <div class="card-body">
-            
-            </div>
-            <p className="H1 fs-5 ">
-              In moments of loss, let us provide the comfort of a warm, nourishing meal. We offer dignified and compassionate catering services for burials and memorials, handling all logistics with quiet efficiency. Our team ensures that your guests are well cared for with hearty, respectful menus, allowing you the space to focus on honoring your loved one.
-              </p>
-            </div>
-
-        
-        </div>
+       
         
 
         

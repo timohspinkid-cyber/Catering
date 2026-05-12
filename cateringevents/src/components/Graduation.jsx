@@ -1,20 +1,30 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
-const graduationCatering = () => {
+const GraduationCatering = () => {
   return (
-       <div className="graduation-page">
-      {/* Hero Section */}
-      <div className="graduation-hero">
+    <div className="bg-light min-vh-100">
+
+      {/* HERO SECTION */}
+      <div
+        className="text-white d-flex align-items-center"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=1200&auto=format&fit=crop')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          height: "300px",
+        }}
+      >
         <div className="overlay">
           <p className="breadcrumb">
-            Home <span>»</span> Blog <span>»</span> The Best Graduation
-            Catering Themes for the Perfect Send-Off
+            
           </p>
 
           <h1>
-            The Best Graduation Catering Themes for the Perfect Send-Off
+            The Best Graduation Catering Themes 
           </h1>
 
           <p className="hero-text">
@@ -23,16 +33,39 @@ const graduationCatering = () => {
             beginning of a new one.
           </p>
         </div>
+        
       </div>
 
-      {/* Content */}
-      <div className="graduation-container">
-        <p>
+      {/* MAIN CONTENT */}
+      <div className="container py-5">
+
+        <div className="row">
+
+          {/* LEFT SIDE */}
+          <div className="col-md-12">
+
+            <div className="bg-white shadow-sm rounded p-4">
+
+              <img
+                src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200&auto=format&fit=crop"
+                alt="Ruracio Catering"
+                className="img-fluid rounded mb-4"
+                style={{
+                  height: "400px",
+                  width: "100%",
+                  objectFit: "cover",
+                }}
+              />
+
+              <h2 className="fw-bold mb-3 H1">
+                Graduation Catering
+              </h2>
+              <p className=" H1 fs-5 ">
           No great graduation party is complete without delicious catering and
           a memorable theme that helps celebrate the occasion in style.
         </p>
 
-        <p>
+        <p className=" H1 fs-5 ">
           Starting with a theme makes it easier to plan your party and ensures
           that the food reflects the importance of the celebration.
         </p>
@@ -41,19 +74,19 @@ const graduationCatering = () => {
         <section className="theme-card">
           <h2>A Formal Graduation Celebration</h2>
 
-          <p>
+          <p className=" H1 fs-5 ">
             Graduation can be the perfect opportunity to create an elegant and
             classy atmosphere for your guests.
           </p>
 
-          <p>
+          <p className=" H1 fs-5 ">
             For a formal graduation party, choose food that is easy to eat and
             avoids messy spills that could ruin black-tie outfits.
           </p>
 
           <div className="highlight-box">
             <h3>Best Catering Option:</h3>
-            <p>
+            <p className=" H1 fs-5 ">
               One-bite hors d’oeuvres served by professional waiters so guests
               can comfortably mix and mingle.
             </p>
@@ -64,7 +97,7 @@ const graduationCatering = () => {
         <section className="theme-card">
           <h2>A Casual Cookout</h2>
 
-          <p>
+          <p className=" H1 fs-5 ">
             If formal celebrations are not your style, a backyard BBQ cookout
             creates a fun and relaxed atmosphere.
           </p>
@@ -83,7 +116,7 @@ const graduationCatering = () => {
             <li>Green salad and coleslaw</li>
           </ul>
 
-          <p>
+          <p className=" H1 fs-5 ">
             Having caterers prepare fresh grilled meals makes the event stress
             free and enjoyable for everyone.
           </p>
@@ -93,7 +126,7 @@ const graduationCatering = () => {
         <section className="theme-card">
           <h2>A Hawaiian Luau</h2>
 
-          <p>
+          <p className=" H1 fs-5 ">
             Bring the excitement of summer into your graduation party with a
             colorful Hawaiian luau theme.
           </p>
@@ -164,16 +197,27 @@ const graduationCatering = () => {
 
           
         </section>
+
+
+                
+
+                
+
+              
+
+            </div>
+
+          </div>
+
+          
+
+        </div>
+
       </div>
+
     </div>
-
-     
-        
-
-      
-
-
   );
 };
 
-export default graduationCatering;
+
+export default GraduationCatering;

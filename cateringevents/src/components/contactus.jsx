@@ -1,219 +1,88 @@
 import React, { useState } from 'react';
 
-const Booking = () => {
+const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
 
-  // Username
-  const [username, setUsername] = useState('');
-  const [usernameError, setUsernameError] = useState('');
-
-  // County
-  const [county, setCounty] = useState('');
-  const [countyError, setCountyError] = useState('');
-
-  // Password
-  const [password, setPassword] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-
-
-
-  // USERNAME VALIDATION
-  const handleUsernameValidation = (e) => {
-
-    const value = e.target.value;
-
-    setUsername(value);
-
-    if (value.trim() === '') {
-
-      setUsernameError('Username is required');
-
-    } else if (value.length > 10) {
-
-      setUsernameError('Username should not exceed 10 characters');
-
-    } else {
-
-      setUsernameError('');
-
-    }
-  };
-
-
-
-  // COUNTY VALIDATION
-  const handleCountyValidation = (e) => {
-
-    const value = e.target.value;
-
-    setCounty(value);
-
-    if (value.trim() === '') {
-
-      setCountyError('County is required');
-
-    } else {
-
-      setCountyError('');
-
-    }
-  };
-
-
-
-  // PASSWORD VALIDATION
-  const handlePasswordValidation = (e) => {
-
-    const value = e.target.value;
-
-    setPassword(value);
-
-    if (value.trim() === '') {
-
-      setPasswordError('Password is required');
-
-    } else if (value.length < 8) {
-
-      setPasswordError('Password should be at least 8 characters');
-
-    } else if (!/[a-zA-Z]/.test(value)) {
-
-      setPasswordError('Password must contain at least one letter');
-
-    } else {
-
-      setPasswordError('');
-
-    }
-  };
-
-
-
-  // SUBMIT
-  const handleSubmit = (e) => {
-
-    e.preventDefault();
-
-    // FINAL CHECK
-    if (
-      usernameError ||
-      countyError ||
-      passwordError ||
-      !username ||
-      !county ||
-      !password
-    ) {
-
-      alert('Please fix all errors first');
-
-      return;
-    }
-
-    alert('Form submitted successfully');
-
-    console.log({
-      username,
-      county,
-      password
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
     });
-
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+    alert("Message sent successfully!");
 
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    });
+  };
 
   return (
+    <div className="contact-page">
 
-    <div style={{ padding: '20px' }}>
+      <h2>Contact Us</h2>
+      <p className="subtitle">Send Us A Message</p>
 
-      <h2>Booking Form</h2>
+      <div className="contact-container">
 
-      <form onSubmit={handleSubmit}>
-
-        {/* USERNAME */}
-        <div>
-
-          <label>Username:</label>
-
-          <br />
-
+        {/* FORM */}
+        <form className="contact-form" onSubmit={handleSubmit}>
           <input
             type="text"
-            name="username"
-            value={username}
-            onChange={handleUsernameValidation}
+            name="name"
+            placeholder="Name *"
+            value={formData.name}
+            onChange={handleChange}
+            required
           />
-
-          <br />
-
-          <i style={{ color: 'red' }}>
-            {usernameError}
-          </i>
-
-        </div>
-
-        <br />
-
-
-
-        {/* COUNTY */}
-        <div>
-
-          <label>County:</label>
-
-          <br />
 
           <input
-            type="text"
-            name="county"
-            value={county}
-            onChange={handleCountyValidation}
+            type="email"
+            name="email"
+            placeholder="Email *"
+            value={formData.email}
+            onChange={handleChange}
+            required
           />
-
-          <br />
-
-          <i style={{ color: 'red' }}>
-            {countyError}
-          </i>
-
-        </div>
-
-        <br />
-
-
-
-        {/* PASSWORD */}
-        <div>
-
-          <label>Password:</label>
-
-          <br />
 
           <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handlePasswordValidation}
+            type="tel"
+            name="phone"
+            placeholder="Phone *"
+            value={formData.phone}
+            onChange={handleChange}
+            required
           />
 
-          <br />
+          <textarea
+            name="message"
+            placeholder="Message / Service *"
+            value={formData.message}
+            onChange={handleChange}
+            required
+          />
 
-          <i style={{ color: 'red' }}>
-            {passwordError}
-          </i>
+          <button type="submit">Submit</button>
+          <p><strong>Phone:</strong> 0702726620| 0798729500</p>
+        </form>
 
-        </div>
+        {/* INFO */}
+       
 
-        <br />
-
-
-
-        <button type="submit">
-          Submit
-        </button>
-
-      </form>
-
+      </div>
     </div>
   );
 };
 
-export default Booking;
+export default Contact;

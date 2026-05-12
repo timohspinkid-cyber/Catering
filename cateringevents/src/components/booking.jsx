@@ -80,19 +80,24 @@ const Booking = () => {
     };
 
     return (
-        <div>
-            <h2>Booking Form</h2>
+       
 
-            <form onSubmit={handleSubmit}>
+            
+     <div className='row justify-content-center'>
+      <br />
+      <div className='col-md-6 card shadow'>
+        <h1>Booking Form</h1>
+        <form onSubmit={handleSubmit}>
 
                 {/* Username */}
-                <div>
+                <div >
                     <label>Username:</label><br />
 
                     <input
                         type="text"
                         value={username}
                         onChange={handleUsernameValidation}
+                         placeholder='enter your '
                     />
 
                     <br />
@@ -105,13 +110,14 @@ const Booking = () => {
                 <br />
 
                 {/* County */}
-                <div>
+                <div >
                     <label>County:</label><br />
 
                     <input
                         type="text"
                         value={county}
                         onChange={handleCountyValidation}
+                         placeholder='enter your county'
                     />
 
                     <br />
@@ -124,13 +130,14 @@ const Booking = () => {
                 <br />
 
                 {/* Password */}
-                <div>
+                <div >
                     <label>Password:</label><br />
 
                     <input
                         type="password"
                         value={password}
                         onChange={handlePasswordValidation}
+                        placeholder='enter your password'
                     />
 
                     <br />
@@ -147,6 +154,18 @@ const Booking = () => {
                 </button>
 
             </form>
+       
+          
+          
+
+
+
+
+
+        
+      
+
+      </div>
         </div>
     );
 };

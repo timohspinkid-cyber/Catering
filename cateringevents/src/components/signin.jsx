@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
+
 const SignIn = () => {
   const[email,setEmail]=useState()
   const[password,setPassword]=useState()
@@ -89,9 +90,9 @@ const SignIn = () => {
           <input type="password" placeholder='Enter your password' className='form-control' value={password} onChange={(e)=>setPassword(e.target.value)}/>
           <br />
           <br />
-          <input type="submit" value={"Sign In"} className='form-control bg-info'/>
+          <input type="submit" value={"Sign In"} className='form-control btn btn-success text-white m-4 btn-outline-info'/>
           <br />
-          <p>Don't have an account?<Link to='/signup'>Sign Up</Link></p>
+          <p>Don't have an account?<Link to='/signup' >Sign Up</Link></p>
           
 
 

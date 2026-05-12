@@ -1,309 +1,166 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
-function ChatBot() {
-
-  // OPEN/CLOSE CHAT
-  const [openChat, setOpenChat] = useState(false);
-
-  // INPUT MESSAGE
-  const [message, setMessage] = useState("");
-
-  // CHAT HISTORY
+const ChatBot = () => {
   const [messages, setMessages] = useState([
     {
       sender: "bot",
-      text:
-        "👋 Hello! Welcome to Smart Spare Parts Marketplace. How can I help you today?"
-    }
+      text: "Hi 👋 I’m your AwayHome Events Assistant. Ask me about services, booking or pricing!",
+    },
   ]);
 
-  // SEND MESSAGE
-  const sendMessage = () => {
+  const [input, setInput] = useState("");
+  const messagesEndRef = useRef(null);
 
-    // EMPTY INPUT
-    if (!message.trim()) return;
+  const responses = [
+    {
+      regex: /price|cost|how much/i,
+      replies: [
+        "Our pricing depends on the event type and size. Contact us for a quote 💰",
+        "We offer flexible pricing for weddings, corporate events and parties 🎉",
+      ],
+    },
+    {
+      regex: /catering/i,
+      replies: [
+        "We offer premium catering services for all types of events 🍽️",
+        "Our catering includes weddings, corporate events and private parties 👨‍🍳",
+      ],
+    },
+    {
+      regex: /tents|chairs/i,
+      replies: [
+        "We provide luxury tents & chairs, including the exclusive Atrium Tent ⛺",
+      ],
+    },
+    {
+      regex: /location/i,
+      replies: ["We are located at Mbugus Plaza, Nairobi, Kenya 📍"],
+    },
+    {
+      regex: /hello|hi|hey/i,
+      replies: ["Hello 👋 How can I help you today?"],
+    },
+  ];
 
-    const userText = message;
-
-    // CONVERT TO LOWERCASE
-    const userMessage = message.toLowerCase();
-
-    let botReply = "";
-
-    // GREETINGS
-    if (
-      userMessage.includes("hello") ||
-      userMessage.includes("hi") ||
-      userMessage.includes("hey")
-    ) {
-
-      botReply =
-        "👋 Hello! Welcome to Smart Spare Parts Marketplace.";
-
-    }
-
-    // BRAKES
-    else if (
-      userMessage.includes("brake") ||
-      userMessage.includes("brakes")
-    ) {
-
-      botReply =
-        "✅ Brake pads and brake discs are available.";
-
-    }
-
-    // ENGINE
-    else if (userMessage.includes("engine")) {
-
-      botReply =
-        "⚙️ Engine parts are available.";
-
-    }
-
-    // BATTERY
-    else if (
-      userMessage.includes("battery") ||
-      userMessage.includes("batteries")
-    ) {
-
-      botReply =
-        "🔋 Car batteries are available.";
-
-    }
-
-    // OIL
-    else if (
-      userMessage.includes("oil") ||
-      userMessage.includes("lubricant")
-    ) {
-
-      botReply =
-        "🛢️ Engine oils are available.";
-
-    }
-
-    // PRICE
-    else if (
-      userMessage.includes("price") ||
-      userMessage.includes("cost")
-    ) {
-
-      botReply =
-        "💰 Prices depend on the spare part type.";
-
-    }
-
-    // DELIVERY
-    else if (
-      userMessage.includes("delivery") ||
-      userMessage.includes("shipping")
-    ) {
-
-      botReply =
-        "🚚 We offer countrywide delivery.";
-
-    }
-
-    // LOCATION
-    else if (
-      userMessage.includes("location") ||
-      userMessage.includes("where are you")
-    ) {
-
-      botReply =
-        "📍 We are located in Nairobi, Kenya.";
-
-    }
-
-    // THANKS
-    else if (
-      userMessage.includes("thanks") ||
-      userMessage.includes("thank you")
-    ) {
-
-      botReply =
-        "😊 You're welcome!";
-
-    }
-
-    // DEFAULT
-    else {
-
-      botReply =
-        "🤖 Sorry, I didn't understand that.";
-
-    }
-
-    // UPDATE CHAT
-    setMessages((prevMessages) => [
-      ...prevMessages,
-
-      {
-        sender: "user",
-        text: userText
-      },
-
-      {
-        sender: "bot",
-        text: botReply
+  const getBotReply = (text) => {
+    for (let r of responses) {
+      if (r.regex.test(text)) {
+        return r.replies[Math.floor(Math.random() * r.replies.length)];
       }
-    ]);
-
-    // CLEAR INPUT
-    setMessage("");
+    }
+    return "Thanks for your message 😊 Ask about services, pricing or booking.";
   };
 
+  const sendMessage = () => {
+    if (!input.trim()) return;
+
+    const userMsg = { sender: "user", text: input };
+    const botMsg = { sender: "bot", text: getBotReply(input) };
+
+    setMessages([...messages, userMsg, botMsg]);
+    setInput("");
+  };
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
   return (
+    <div className="chat-page">
 
-    <>
+      {/* HERO SECTION (same style as ContactPage) */}
+      <section className="hero chat-hero">
+        <div className="overlay">
+          <h1>AI Chat Assistant</h1>
+          <p>Get instant help about our events & services</p>
+        </div>
+      </section>
 
-      {/* CHAT BUTTON */}
-      <button
-        className="btn btn-primary rounded-circle shadow"
-        onClick={() => setOpenChat(!openChat)}
-        style={{
-          position: "fixed",
-          bottom: "20px",
-          right: "20px",
-          width: "60px",
-          height: "60px",
-          fontSize: "24px",
-          zIndex: 1000
-        }}
-      >
-        💬
-      </button>
+      {/* CHAT SECTION */}
+      <section className="chat-section">
+        <div className="chat-container">
 
-      {/* CHATBOX */}
-      {openChat && (
-
-        <div
-          className="card shadow-lg border-0"
-          style={{
-            borderRadius: "20px",
-            width: "350px",
-            position: "fixed",
-            bottom: "90px",
-            right: "20px",
-            overflow: "hidden",
-            background: "white",
-            zIndex: 1000
-          }}
-        >
-
-          {/* HEADER */}
-          <div
-            className="p-3 d-flex justify-content-between align-items-center"
-            style={{
-              background:
-                "linear-gradient(90deg,#0f2027,#203a43,#2c5364)",
-              color: "white"
-            }}
-          >
-
-            <h5 className="fw-bold m-0">
-              🤖 SpareBot Assistant
-            </h5>
-
-            <button
-              className="btn btn-sm btn-light"
-              onClick={() => setOpenChat(false)}
-            >
-              ✖
-            </button>
-
-          </div>
-
-          {/* CHAT AREA */}
-          <div
-            style={{
-              height: "350px",
-              overflowY: "auto",
-              padding: "15px",
-              background: "#f8f9fa"
-            }}
-          >
-
-            {messages.map((msg, index) => (
-
-              <div
-                key={index}
-                className={
-                  msg.sender === "user"
-                    ? "text-end"
-                    : "text-start"
-                }
-              >
-
-                <div
-                  style={{
-                    display: "inline-block",
-                    padding: "10px 15px",
-                    borderRadius: "15px",
-                    marginBottom: "10px",
-                    maxWidth: "80%",
-                    background:
-                      msg.sender === "user"
-                        ? "#0d6efd"
-                        : "#e9ecef",
-                    color:
-                      msg.sender === "user"
-                        ? "white"
-                        : "black"
-                  }}
-                >
-
-                  {msg.text}
-
-                </div>
-
-              </div>
-
-            ))}
-
-          </div>
-
-          {/* INPUT AREA */}
-          <div className="p-3 border-top">
-
-            <div className="d-flex gap-2">
-
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Ask something..."
-                value={message}
-                onChange={(e) =>
-                  setMessage(e.target.value)
-                }
-                onKeyDown={(e) => {
-
-                  if (e.key === "Enter") {
-
-                    sendMessage();
-                  }
-                }}
-              />
-
-              <button
-                className="btn btn-primary"
-                onClick={sendMessage}
-              >
-                Send
-              </button>
-
+          {/* CHAT BOX */}
+          <div className="chat-box">
+            <div className="chat-header">
+              AwayHome Events Assistant 💬
             </div>
 
+            <div className="chat-body">
+              {messages.map((msg, i) => (
+                <div
+                  key={i}
+                  className={`chat-msg ${msg.sender === "user" ? "user" : "bot"}`}
+                >
+                  {msg.text}
+                </div>
+              ))}
+              <div ref={messagesEndRef} />
+            </div>
+
+            <div className="chat-input">
+              <input
+                type="text"
+                placeholder="Type your message..."
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+              />
+              <button onClick={sendMessage}>Send</button>
+            </div>
+          </div>
+
+          {/* INFO SIDE (like contact info panel) */}
+          <div className="chat-info">
+            <h2>Need Help?</h2>
+
+            <div className="info-box">
+              <h4>Services</h4>
+              <p>Catering, Decoration, Tents, Transport</p>
+            </div>
+
+            <div className="info-box">
+              <h4>Contact</h4>
+              <p>0728 649 788 | 0726 842 014</p>
+              <p>info@awayhomeevents.com</p>
+            </div>
+
+            <div className="info-box">
+              <h4>Location</h4>
+              <p>Mbugus Plaza, Nairobi</p>
+            </div>
           </div>
 
         </div>
+      </section>
 
-      )}
+      {/* ABOUT SECTION (same style as ContactPage) */}
+      <section className="about-company">
+        <div className="about-content">
+          <h2>AwayHome Chat Support</h2>
+          <p>
+            Our AI assistant helps you instantly learn about our event planning,
+            catering, décor, tents and booking services.
+          </p>
+        </div>
+      </section>
 
-    </>
+      {/* FOOTER (same as ContactPage) */}
+      <footer className="footer">
+        <div className="footer-bottom">
+          <p>
+            @2025 - All Right Reserved. Developed by Nevin Digital Marketing Agency
+          </p>
+        </div>
+      </footer>
 
+      {/* FLOATING BUTTON */}
+      <div className="chatbot">
+        <p>💬 Chat with us</p>
+      </div>
+
+    </div>
   );
-}
+};
 
 export default ChatBot;

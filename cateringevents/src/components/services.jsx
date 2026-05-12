@@ -3,27 +3,35 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 const services = () => {
   return (
-    <div className=''>
-      <div className="carousel-item active">
-              <img 
-                src="/images/cooking-removebg-preview.png" 
-                alt="Slide 1" 
-                className="w-100 d-block" 
-                style={{ height: '300px', width: '450px', objectFit: 'cover' }} 
-              />
-              <div className='carousel-caption d-none d-md-block'>
-                <h1 className='h1'>The best catering services </h1>
-              </div>
-            </div>
-     
-      <section className="row">
+  <div className='container-fluid py-4 bg-light'>
+
+    <div>
+          
+          <div className="carousel-inner">
+                <div className="carousel-item active">
+                  <img 
+                    src="/images/cooking-removebg-preview.png" 
+                    alt="Slide 1" 
+                    className="w-100 d-block" 
+                    style={{ height: '300px', width: '450px', objectFit: 'cover' }} 
+                  />
+                  <div className='carousel-caption d-none d-md-block'>
+                    <h1 className=''>Alice Otside catering Welcome to CateringPro </h1>
+                  </div>
+                </div>
+                
+                  
+                
+                
+                </div>
+                <section className="row">
         
 
         <div className="col-md-12 text-center">
             
           <div className="card shadow">
             <div className="card-header">
-              <h1 className='h1'></h1>
+              <h1 className='h1'>The best catering services </h1>
            </div>
           <div className="card-body">
         <p className="text-dark H1">
@@ -49,8 +57,10 @@ Therefore, the way to go is choosing the best caterers in Nairobi, and that is w
 
 
     </section>
-    </div>
-  )
+                
+     </div>
+  </div>
+)
 }
 
 export default services
